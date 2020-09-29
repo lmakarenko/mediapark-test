@@ -1,0 +1,46 @@
+version: "3.3"
+services:
+  postgresql:
+    image: postgres
+    hostname: postgresql
+    environment:
+      POSTGRES_DATABASE: postgresql-test
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: "123"
+    ports:
+      - "8989:3306"
+    volumes:
+      - "./postgresql:/var/lib/postgresql"
+  php-fpm:
+    image: webdevops/php-dev:7.3
+    hostname: php-fpm
+    volumes:
+      - "./:/app"
+    working_dir: "/app"
+    depends_on:
+      - postgresql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - /sessions
+    depends_on:
+      - postgresql
+  nginx:
+    image: webdevops/nginx
+    hostname: nginx
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+      WEB_PHP_SOCKET: php-fpm:9000
+    ports:
+      - "8000:80"
+    volumes:
+      - "./public:/app/public"
+    depends_on:
+      - php-fpm
