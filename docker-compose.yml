@@ -2,33 +2,39 @@ version: "3.3"
 services:
   postgresql:
     image: postgres
+    restart: always
     hostname: postgresql
     environment:
       POSTGRES_DATABASE: postgresql-test
-      POSTGRES_USER: root
+      POSTGRES_USER: admin
       POSTGRES_PASSWORD: "123"
+      POSTGRES_HOST_AUTH_METHOD: trust
+      PGDATA: /var/lib/postgresql/data
     ports:
-      - "8989:3306"
+      - "5432:5432"
     volumes:
-      - "./postgresql:/var/lib/postgresql"
+      - "./postgresql:/var/lib/postgresql/data"
+  pgadmin:
+    image: dpage/pgadmin4:4.18
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin
+      PGADMIN_DEFAULT_PASSWORD: 123
+      PGADMIN_LISTEN_PORT: 5050
+    ports:
+      - "5050:5050"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    links:
+      - "postgresql:pgsql-server"
+    depends_on:
+      - postgresql
   php-fpm:
     image: webdevops/php-dev:7.3
     hostname: php-fpm
     volumes:
       - "./:/app"
     working_dir: "/app"
-    depends_on:
-      - postgresql
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    environment:
-      - PMA_ARBITRARY=1
-    restart: always
-    ports:
-      - 8080:80
-    volumes:
-      - /sessions
     depends_on:
       - postgresql
   nginx:
@@ -44,3 +50,7 @@ services:
       - "./public:/app/public"
     depends_on:
       - php-fpm
+
+volumes:
+  postgresql:
+  pgadmin-data:
