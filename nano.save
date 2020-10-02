@@ -1,0 +1,256 @@
+[
+    {
+        "Id": "e18afd0c616674210d3a2d00023286c379f4e35fe1e5d5fe409c72cf0bab820c",
+        "Created": "2020-10-02T05:29:37.210626895Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "postgres"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 3593,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2020-10-02T05:29:38.696544966Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:873ed24f782e538e14674165ed34aa681d7fb51afe94e19be9a8c303bef8b874",
+        "ResolvConfPath": "/var/lib/docker/containers/e18afd0c616674210d3a2d00023286c379f4e35fe1e5d5fe409c72cf0bab820c/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/e18afd0c616674210d3a2d00023286c379f4e35fe1e5d5fe409c72cf0bab820c/hostname",
+        "HostsPath": "/var/lib/docker/containers/e18afd0c616674210d3a2d00023286c379f4e35fe1e5d5fe409c72cf0bab820c/hosts",
+        "LogPath": 
+"/var/lib/docker/containers/e18afd0c616674210d3a2d00023286c379f4e35fe1e5d5fe409c72cf0bab820c/e18afd0c616674210d3a2d00023286c379f4e35fe1e5d5fe409c72cf0bab820c-json.log",
+        "Name": "/mediapark-test_postgresql_1",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/host_mnt/Users/levmakarenko/PhpstormProjects/mediapark-test/postgresql:/var/lib/postgresql/data:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "mediapark-test_default",
+            "PortBindings": {
+                "5432/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "5432"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": [],
+            "CapAdd": null,
+            "CapDrop": null,
+            "Capabilities": null,
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": 
+"/var/lib/docker/overlay2/65e3f152d19876476bbb2fdff010475f91ab413c6d818a9ccc0c1e2db7d7f1cd-init/diff:/var/lib/docker/overlay2/7b0b3ec6232907ad968e7faf8ea74db711b595f3eecb0064976eda1c18f058d5/diff:/var/lib/docker/overlay2/45b07a6a0ef2d3923c50c06029b90a10093953f5bc4779b7522cf758d5823b14/diff:/var/lib/docker/overlay2/0e357c37dde402c7c6426fac5944b65d19409d1224c8218650d28fecae6710bd/diff:/var/lib/docker/overlay2/3f39856fc64bb2e10829d97630b9fef161fdfa8e87d1296ab6aba8cfab62e246/diff:/var/lib/docker/overlay2/3c862c15c8382974eda31add74ff9afdfa95273189f7638387594d95a9bb71ae/diff:/var/lib/docker/overlay2/c078ad291ec90f7bb7cb23b94c737e0f411dbc31a27d4d646c52008980e8af05/diff:/var/lib/docker/overlay2/97d684229c99e287a187d87630d7e3ef9898211d11172988c7a92e8028e7e32a/diff:/var/lib/docker/overlay2/69dbe51eb5731b32d74a1161ea02ae2e4ee6ee603ba7932339269536bb42d318/diff:/var/lib/docker/overlay2/3666b20502e6ef1275b17c9b70e180ea5b3c8670e48168f592c1e42f3f4938cc/diff:/var/lib/docker/overlay2/62fd0aab4104aece2ee289da2a9031cd6bd32b0e81e088d3cbb4636b88d4c23e/diff:/var/lib/docker/overlay2/bd392d9321d820be76d3a16c72f507d52f8f8a987d5699ac6fe64263ce8364f7/diff:/var/lib/docker/overlay2/608a5e466fa79dbd476c575ebf1611279e90bb2bdf3c413998291cb3150a6842/diff:/var/lib/docker/overlay2/3d322a890236b7a839999268353f52f2c719a321ff0fb2f9d5b3796c84515a45/diff:/var/lib/docker/overlay2/5bb400fb3cd5e5d0bfaf4294c0bcadc5f2200ff4578d6b5aaab4672c4424c174/diff",
+                "MergedDir": "/var/lib/docker/overlay2/65e3f152d19876476bbb2fdff010475f91ab413c6d818a9ccc0c1e2db7d7f1cd/merged",
+                "UpperDir": "/var/lib/docker/overlay2/65e3f152d19876476bbb2fdff010475f91ab413c6d818a9ccc0c1e2db7d7f1cd/diff",
+                "WorkDir": "/var/lib/docker/overlay2/65e3f152d19876476bbb2fdff010475f91ab413c6d818a9ccc0c1e2db7d7f1cd/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/host_mnt/Users/levmakarenko/PhpstormProjects/mediapark-test/postgresql",
+                "Destination": "/var/lib/postgresql/data",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "postgresql",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "5432/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "POSTGRES_DATABASE=postgresql-test",
+                "POSTGRES_USER=admin",
+                "POSTGRES_PASSWORD=123",
+                "POSTGRES_HOST_AUTH_METHOD=trust",
+                "PGDATA=/var/lib/postgresql/data",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/12/bin",
+                "GOSU_VERSION=1.11",
+                "LANG=en_US.utf8",
+                "PG_MAJOR=12",
+                "PG_VERSION=12.2-1.pgdg100+1"
+            ],
+            "Cmd": [
+                "postgres"
+            ],
+            "Image": "postgres",
+            "Volumes": {
+                "/var/lib/postgresql/data": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "c171942bcc16bdf8c1950a7b845500b01fc3faa8d8bd37821617b5442375653e",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "mediapark-test",
+                "com.docker.compose.project.config_files": "docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/Users/levmakarenko/PhpstormProjects/mediapark-test",
+                "com.docker.compose.service": "postgresql",
+                "com.docker.compose.version": "1.27.4",
+                "desktop.docker.io/binds/0/Source": "/Users/levmakarenko/PhpstormProjects/mediapark-test/postgresql",
+                "desktop.docker.io/binds/0/SourceKind": "hostFile",
+                "desktop.docker.io/binds/0/Target": "/var/lib/postgresql/data"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "56a2dc4f631f1a6ade98b0e21ba596a7b9245523dc57d199e86e70058eefeb35",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "5432/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "5432"
+                    }
+                ]
+            },
+            "SandboxKey": "/var/run/docker/netns/56a2dc4f631f",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "mediapark-test_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "postgresql",
+                        "e18afd0c6166"
+                    ],
+                    "NetworkID": "ade4c4a42f86665d1a922d2558e7b6eb050d2d0a9be4bd9331dec1e0b98e361e",
+                    "EndpointID": "ed579842ae27f04efaa5ed98cb4035308380845eaf46f0b5f4156e2752110cba",
+                    "Gateway": "172.24.0.1",
+                    "IPAddress": "172.24.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:18:00:02",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
