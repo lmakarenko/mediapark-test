@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
     use HasFactory;
+
+    const STATUS_NEW = 1;
+    const STATUS_PROCESS = 2;
+    const STATUS_EDIT = 3;
+    const STATUS_DONE = 4;
+    const STATUS_ERROR = 5;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -47,14 +54,19 @@ class Game extends Model
      */
     public function players()
     {
-        return $this->hasManyThrough(
+        /*return $this->hasManyThrough(
             Player::class,
             GameResult::class,
             'game_id',
             'user_id',
             'id',
             'user_id',
-        );
+        );*/
+        return $this->belongsToMany(
+            Player::class,
+            'game_results',
+            'game_id',
+            'user_id');
     }
     /**
      * Get all results for this game

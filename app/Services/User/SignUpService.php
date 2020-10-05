@@ -40,9 +40,14 @@ class SignUpService
     {
         try {
             $newUser = $this->signUp($userInfo);
-            $apiCookie = $this->cookie->make($newUser->id, $csrfToken);
+            /*$apiCookie = $this->cookie->make($newUser->id, $csrfToken);
 
-            return $this->response->success(['message' => 'User successfully signed up'])->withCookie($apiCookie);
+            return $this->response->success(['message' => 'User successfully signed up'])->withCookie($apiCookie);*/
+
+            $user = \Auth::user();
+            $scope = $user->is_admin ? ['manage-game'] : ['play-game'];
+            return $user->createToken($this->auth->user()->getKey(), $scope);
+
         } catch (ValidationException $e) {
             return $this->response->validateError($e->errors());
         }

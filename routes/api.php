@@ -1,22 +1,45 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/users/me', '\App\Api\Controllers\SessionController@currentUser');
     Route::get('/logout', '\App\Api\Controllers\SessionController@logout');
 
-    Route::apiResource('/users', '\App\Api\Controllers\UserController');
     Route::put('/users/{slug}/update-password', '\App\Api\Controllers\UserController@changePassword');
 
-    Route::apiResource('/games', '\App\Api\Controllers\GameController');
-    Route::get('/games/find-new', '\App\Api\Controllers\GameController@findNew');
+    /*Route::group(['middleware' => ['scope:manage-player']], function () {
+        Route::apiResource('/players', '\App\Api\Controllers\PlayerController');
+    });*/
 
-    /*getRoute::get('/avatars', '\App\Api\Controllers\AvatarsController@get');
-    Route::post('/avatars', '\App\Api\Controllers\AvatarsController@upload');
-    Route::put('/avatars', '\App\Api\Controllers\AvatarsController@update');
-    Route::delete('/avatars', '\App\Api\Controllers\AvatarsController@delete');*/
+    // Routes only for game managers (Admins)
+    Route::group(['middleware' => ['scope:manage-game']], function () {
+        // Api resources for admin CRUD operations (create / read / update / delete)
+        // Games
+        Route::apiResource('/games', '\App\Api\Controllers\GameController');
+        // Players
+        //Route::apiResource('/players', '\App\Api\Controllers\PlayerController');
+        // Service actions
+        // Admin cancels a game
+        Route::post('/services/admin-service/cancel-game', '\App\Api\Controllers\AdminServiceController@cancelGame');
+        // Admin finishes a game
+        Route::post('/services/admin-service/finish-game', '\App\Api\Controllers\AdminServiceController@finishGame');
+    });
+
+    // Routes only for game players (Players)
+    Route::group(['middleware' => ['scope:play-game']], function () {
+        // Player's profile data
+        Route::get('/players/{id}', '\App\Api\Controllers\PlayerServiceController@getProfile');
+        // Player edits his profile
+        Route::put('/players/{id}', '\App\Api\Controllers\PlayerServiceController@updateProfile');
+        // Service actions
+        // Player finds a game
+        Route::get('/services/player-service/find-game', '\App\Api\Controllers\PlayerServiceController@findNewGame');
+        // Player joins a game
+        Route::post('/services/player-service/join-game', '\App\Api\Controllers\PlayerServiceController@joinGame');
+        // Player cancels a game
+        Route::post('/services/player-service/cancel-game', '\App\Api\Controllers\PlayerServiceController@cancelGame');
+    });
 });
 
 /**

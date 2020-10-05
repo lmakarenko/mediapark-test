@@ -12,9 +12,7 @@ class OnlyOwnUserCriteria implements CriteriaInterface
     public function apply($model, RepositoryInterface $repository)
     {
         $this->auth = resolve('Illuminate\Contracts\Auth\Factory');
-
         $model = $model->where('id', '=', $this->auth->user()->id);
-
         return $model;
     }
 }

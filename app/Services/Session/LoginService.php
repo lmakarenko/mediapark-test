@@ -45,11 +45,15 @@ class LoginService
             $attempt = $this->attemptLogin($loginInfo, $csrfToken);
 
             if ($attempt) {
-                $apiCookie = $this->cookie->make($this->auth->user()->getKey(), $csrfToken);
+                /*$apiCookie = $this->cookie->make($this->auth->user()->getKey(), $csrfToken);
 
                 return $this->response->success(
                     $this->repository->skipPresenter(false)->currentUser()
-                )->withCookie($apiCookie);
+                )->withCookie($apiCookie);*/
+                $user = \Auth::user();
+                $scope = $user->is_admin ? ['manage-game'] : ['play-game'];
+                return $user->createToken($this->auth->user()->getKey(), $scope);
+
             } else {
                 return $this->response->unauthorized('Incorrect login details');
             }

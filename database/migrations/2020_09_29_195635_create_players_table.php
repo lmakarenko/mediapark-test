@@ -15,6 +15,7 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->primary();
+            $table->enum('status', [1, 2, 3, 4])->default(1);
             $table->unsignedInteger('games_started')->default(0);
             $table->unsignedInteger('games_finished')->default(0);
             $table->double('rating')->default('1.0');

@@ -180,6 +180,7 @@ return [
         //Prettus\Repository\Providers\RepositoryServiceProvider::class,
         App\Providers\ResponseMacroServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
+        App\Providers\ErrorLoggerServiceProvider::class,
     ],
 
     /*

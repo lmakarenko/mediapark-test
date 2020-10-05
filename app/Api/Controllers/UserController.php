@@ -36,8 +36,7 @@ class UserController
     {
         $userData = $request->only([
             'slug',
-            'first_name',
-            'last_name',
+            'name',
             'email'
         ]);
 

@@ -14,11 +14,13 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('admin/home', [HomeController::class, 'handleAdmin'])->name('admin.route')->middleware('admin');
+Route::get('admin/home', [HomeController::class, 'handleAdmin'])->name('admin.route')->middleware('admin');*/
+
+Route::view('/{path?}', 'app');

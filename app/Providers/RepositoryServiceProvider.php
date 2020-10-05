@@ -22,5 +22,9 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Contracts\Repository\GameRepositoryContract',
             'App\Repositories\Eloquent\GameRepository'
         );
+        $this->app->bind(
+            'App\Contracts\Repository\PlayerRepositoryContract',
+            'App\Repositories\Eloquent\PlayerRepository'
+        );
     }
 }

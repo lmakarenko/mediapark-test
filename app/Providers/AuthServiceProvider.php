@@ -27,8 +27,11 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
+        Passport::tokensCan([
+            'play-game' => 'can play games',
+            'manage-game' => 'can manage games',
+        ]);
         Passport::routes();
-
         //Passport::loadKeysFrom();
         //Passport::tokensExpireIn(now()->addDays(15));
         //Passport::refreshTokensExpireIn(now()->addDays(30));

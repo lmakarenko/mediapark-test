@@ -10,6 +10,12 @@ use Laravel\Passport\HasApiTokens;
 class Player extends Model
 {
     use HasFactory, Notifiable, HasApiTokens;
+
+    const STATUS_ONLINE = 1;
+    const STATUS_OFFLINE = 2;
+    const STATUS_SEARCH = 3;
+    const STATUS_PLAY = 4;
+
     /**
      * Disable timestamp fields (created_at, updated_at)
      * @var bool
@@ -65,13 +71,18 @@ class Player extends Model
      */
     public function games()
     {
-        return $this->hasManyThrough(
+        /*return $this->hasManyThrough(
             Game::class,
             GameResult::class,
             'user_id',
             'id',
             'user_id',
             'game_id'
-        );
+        );*/
+        return $this->belongsToMany(
+            Game::class,
+            'game_results',
+            'user_id',
+            'game_id');
     }
 }

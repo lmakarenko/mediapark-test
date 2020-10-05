@@ -28,7 +28,7 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->enum('status', ['new', 'process', 'edit', 'done'])->default('new');
+            $table->enum('status', [1, 2, 3, 4])->default(1);
             $table->unsignedTinyInteger('num_players')->default(0);
             $table->timestamp('ended_at', 0)->nullable();
             $table->timestamps();
