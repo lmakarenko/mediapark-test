@@ -46,19 +46,18 @@ class GameAdminService
                     DB::beginTransaction();
                     // Игра. Статус принимает значения из {“Новая”,  “В процессе”, “Редактируется”}
                     // Игровая сессия завершается со статусом “Ошибка”.
-                    // Все участники игровой сессии получают сообщение об ошибке и покидают игровую комнату
                     $this->gameRepo->setGameStatusError($game_id);
                     // Все игроки получают +0 баллов
-                    $results = $this->calcZeroRatings();
-                    $this->gameRepo->setGameResults($game_id, $results);
+                    $this->gameRepo->setGameResults($game_id, $this->calcZeroRatings());
                     DB::commit();
-                    return true;
+                    return ['message' => 'Администратор успешно вышел из игры'];
                 } catch(\Exception $ex) {
+                    DB::rollBack();
                     $this->errorLogger->errorByException('Ошибка выхода администратора из игры', $ex);
                 }
                 break;
         }
-        return false;
+        return ['message' => 'Ошибка выхода администратора из игры'];
     }
 
     protected function calcRatings($game_id)
@@ -73,37 +72,45 @@ class GameAdminService
 
     public function createGame($data)
     {
-        $newData = [
-            'user_id' => $data['user_id']
-        ];
         try {
-            return $this->gameRepo->create($newData);
+            return $this->gameRepo->create($data);
         } catch(\Exception $ex) {
             $this->errorLogger->errorByException('Ошибка создания игры', $ex);
         }
-        return false;
+        return ['message' => 'Ошибка создания игры'];
     }
 
-    public function editGame($game_id, $data)
+    public function updateGame($game_id, $data)
     {
-        $newData = [
-            'user_id' => $data['user_id']
-        ];
         try {
-            return $this->gameRepo->update($newData, $game_id);
+            return $this->gameRepo->update($data, $game_id);
         } catch(\Exception $ex) {
             $this->errorLogger->errorByException('Ошибка редактирования игры', $ex);
         }
-        return false;
+        return ['message' => 'Ошибка редактирования игры'];
+    }
+
+    public function updateGameResults($game_id, $data)
+    {
+        try {
+            return $this->gameRepo->update($data, $game_id);
+        } catch(\Exception $ex) {
+            $this->errorLogger->errorByException('Ошибка редактирования результатов игры', $ex);
+        }
+        return ['message' => 'Ошибка редактирования результатов игры'];
     }
 
     public function finishGame($game_id)
     {
         try {
+            DB::beginTransaction();
             $this->gameRepo->setGameStatusDone($game_id);
             $this->calcRatings($game_id);
+            DB::commit();
         } catch(\Exception $ex) {
+            DB::rollBack();
             $this->errorLogger->errorByException('Ошибка завершения игры', $ex);
         }
+        return ['message' => 'Ошибка завершения игры'];
     }
 }
