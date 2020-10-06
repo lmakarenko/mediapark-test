@@ -54,13 +54,14 @@ class GamePlayerService
     /**
      * Edits players profile data
      *
+     * @param $user_id
      * @param $data
-     * @return mixed
+     * @return mixed|string[]
      */
-    public function editProfile($data)
+    public function editProfile($user_id, $data)
     {
         try {
-            return $this->playerRepo->update($data, $data['user_id']);
+            return $this->playerRepo->update($data, $user_id);
         }  catch(\Exception $ex) {
             $this->errorLogger->errorByException('Ошибка редактирования профиля игрока', $ex);
         }
