@@ -18,6 +18,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        //\Barryvdh\Cors\HandleCors::class,
     ];
 
     /**
@@ -60,5 +61,6 @@ class Kernel extends HttpKernel
         'encryptCookies' => \App\Http\Middleware\EncryptCookies::class,
         'scopes' => \Laravel\Passport\Http\Middleware\CheckScopes::class,
         'scope' => \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,
+        'api_version' => \App\Http\Middleware\APIVersion::class,
     ];
 }
